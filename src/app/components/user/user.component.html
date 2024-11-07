@@ -1,0 +1,32 @@
+<div>
+    <h4>Filter by Name:</h4>
+    <input type="text" [(ngModel)]="filterText" (ngModelChange)="onFilter()" class="form-control mb-3" placeholder="Type name to filter" />
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Hobbies</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of filteredUsers">
+          <td>{{ user.name }}</td>
+          <td>{{ user.age }}</td>
+          <td>{{ user.gender }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let hobby of user.hobbies">{{ hobby }}</li>
+            </ul>
+          </td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="onDelete(user.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,42 @@
+<form [formGroup]="userForm" (ngSubmit)="onSave()">
+    <!-- Name Field -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter your name" />
+    </div>
+  
+    <!-- Age Select Box -->
+    <div class="mb-3">
+      <label for="age" class="form-label">Age</label>
+      <select id="age" formControlName="age" class="form-control">
+        <option value="">Select Age</option>
+        <option *ngFor="let age of [18, 19, 20, 21, 22, 23, 24, 25]">{{ age }}</option>
+      </select>
+    </div>
+  
+    <!-- Gender Radio Buttons -->
+    <div class="mb-3">
+      <label class="form-label">Gender</label>
+      <div>
+        <input type="radio" formControlName="gender" value="Male" id="male" />
+        <label for="male" class="me-3">Male</label>
+  
+        <input type="radio" formControlName="gender" value="Female" id="female" />
+        <label for="female">Female</label>
+      </div>
+    </div>
+  
+    <!-- Hobbies Dynamic Fields -->
+    <!--<div class="mb-3">
+      <label class="form-label">Hobbies</label>
+      <div *ngFor="let hobby of hobbies.controls; let i = index" class="input-group mb-2">
+        <input type="text" [formControl]="hobbies.at(i) as FormControl" class="form-control" placeholder="Enter hobby" />
+        <button *ngIf="i > 0" class="btn btn-danger" type="button" (click)="removeHobby(i)">Remove</button>
+      </div>
+      <button type="button" class="btn btn-secondary" (click)="addHobby()">Add Hobby</button>
+    </div>-->
+  
+    <button type="submit" class="btn btn-primary me-2" [disabled]="userForm.invalid">Save</button>
+    <button type="button" class="btn btn-secondary" (click)="onReset()">Reset</button>
+  </form>
+  
